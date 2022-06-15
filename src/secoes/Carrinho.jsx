@@ -10,17 +10,24 @@ justify-content: space-between;
 }
 `
 
-
 export default class Carrinho extends React.Component {
+  state = {
+    carrinho: []
+  }
   render() {
+    const exibeCarrinho = this.state.carrinho.map(produto => {
+    return ( 
+      <div>
+      <span>7x</span>
+      <span>Produto</span>
+      <button>Remover</button>
+      </div>
+    )
+    })
     return (
       <ContainerCarrinho>
         <h2>Carrinho</h2>
-        <div>
-          <span>7x</span>
-          <span>Produto</span>
-          <button>Remover</button>
-        </div>
+        {exibeCarrinho}
         <p>Valor Total:</p>
       </ContainerCarrinho>
     );
