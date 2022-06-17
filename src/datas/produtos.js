@@ -18,35 +18,35 @@ export const produtos = [
       imagem: camisa2,
       descricao: "Camisa de manga curta com desenho de um astrounauta segurando balões de planetas",
       nome: "Camisa AstroBaloes 2",
-      preco: 79.90
+      preco: 99.90
     },
     {
       id: 3,
       imagem: camisa3,
       descricao: "Camisa Via Láctea",
       nome: "Camisa Via Láctea",
-      preco: 79.90        
+      preco: 59.90        
     },
     {
       id: 4,
       imagem: camisa4,
       descricao: "Camisa infantil do sistema solar",
       nome: "Camisa Sistema Solar",
-      preco: 79.90        
+      preco: 69.90        
     },
     {
       id: 5,
       imagem: camisa5,
       descricao: "Camisa de manga curta I NEED MORE SPACE",
       nome: "Camisa NASA",
-      preco: 79.90        
+      preco: 129.90        
     },
     {
       id: 6,
       imagem: camisa6,
       descricao: "Camisa de manga curta com desenho de um astronauta segurando balões de planetas",
       nome: "Camisa Astronauta",
-      preco: 79.90        
+      preco: 109.90        
     },
 ]
 

@@ -12,22 +12,41 @@ padding: 0 10px;
 
 `
 
-
-
-
 export default class Filtros extends React.Component {
-    render() {
-      return (
-        <FiltroContainer>
-          <h2>Filtros</h2>
-          <span> Valor mínimo:</span>
-          <input type="number"/>
-          <span> Valor máximo:</span>
-          <input type="number"/>
-          <span> Busca por nome:</span>
-          <input type="text"/>
+  
+  state = {
+    
+  }
 
-        </FiltroContainer>
-      );
-    }
+  render() {
+    return (
+      <FiltroContainer>
+        <h2>Filtros</h2>
+        <label htmlFor="valor-min">Valor mínimo:</label>
+        <input 
+        id="valor-min"
+        type="number"
+        value={this.props.valorMin}
+        onChange={this.props.aoDigitarMin}
+        />
+
+        <label htmlFor="valor-max">Valor máximo:</label>
+        <input
+        id="valor-max"
+        type="number"
+        value={this.props.valorMax}
+        onChange={this.props.aoDigitarMax}
+        />
+        
+        <label htmlFor="nome">Busca por nome:</label>
+        <input
+        id="nome"
+        type="text"
+        value={this.props.buscaNome}
+        onChange={this.props.aoDigitarNome}
+        />
+
+      </FiltroContainer>
+    );
+  }
 }
