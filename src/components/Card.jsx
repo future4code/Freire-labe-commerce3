@@ -27,7 +27,7 @@ export default class Card extends React.Component {
     render() {
       return (
         <CardProduto>
-            <img src={this.props.imagem}/>
+            <img src={this.props.imagem} alt={this.props.descricao} />
             <span>{this.props.nome}</span>
             <span>R$ {this.props.preco}</span>            
         </CardProduto>

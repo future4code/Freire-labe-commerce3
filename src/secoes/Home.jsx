@@ -24,7 +24,10 @@ const Botao = styled.button`
 `
 
 const ContainerCard = styled.div`
-
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 `
 
 export default class Home extends React.Component { 
@@ -34,10 +37,30 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const produtosMapeados = this.state.produtos.map((produto) => {
+    const produtosMapeados = this.state.produtos
+    .filter(produto => {
       return (
-        <ContainerCard>
-          <Card 
+        (produto.preco >= this.props.valorMin) && 
+        (produto.preco >= this.props.valorMin) &&
+        (produto.nome.includes(this.props.buscaNome))
+        )
+    })
+    .sort((a, b) => {
+      switch (this.props.ordem) {
+        case "menorPreco":
+          return a.preco - b.preco;  
+        case "maiorPreco":
+          return b.preco - a.preco;  
+        default:
+          return a.preco - b.preco;
+          
+      }
+      
+    })
+    .map(produto => {
+      return (
+        <ContainerCard key={produto.id}>
+          <Card
             imagem={produto.imagem} 
             nome={produto.nome} 
             preco={produto.preco} 
@@ -51,8 +74,17 @@ export default class Home extends React.Component {
     return (
       <div>
             <Cabecalho>
-                <span>Quantidade de produtos</span>
-                <span>Ordenação</span>
+                <span>Quantidade de produtos: {produtosMapeados.length}</span>
+                <span>
+                  <label htmlFor="ordem">Ordenação: </label>
+                  <select 
+                  id="ordem"
+                  value={this.props.ordem}
+                  onChange={this.props.alterarOrdem}>
+                    <option value="menorPreco">Menor Preço</option>
+                    <option value="maiorPreco">Maior Preço</option> 
+                  </select>
+                </span>
             </Cabecalho>
             <PainelProdutos>
                 {produtosMapeados}                

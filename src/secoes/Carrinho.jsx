@@ -26,7 +26,7 @@ export default class Carrinho extends React.Component {
     })
     .map(produto => {
     return ( 
-      <div>
+      <div key={produto.id}>
       <span>{produto.quantidade} X </span>
       <span>{produto.nome}</span>
       <button onClick={() => {this.props.aoClicar(produto.id)}}>Remover</button>
