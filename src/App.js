@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Filtros from './secoes/Filtros';
 import Home from './secoes/Home';
 import Carrinho from './secoes/Carrinho';
+import { carrinho } from "./datas/produtos";
+
 
 const MainContainer = styled.div`
   display: grid;
@@ -12,45 +14,44 @@ const MainContainer = styled.div`
   
 `
 
-
 export default class App extends React.Component {
   state = {
-    carrinho: []
+    carrinho: carrinho
   }
-  adicionarProduto = (nome, id, preco) => {
-    console.log("adicionei");
-    const produtoAdicionado = {
-      id: id,
-      nome: nome,
-      preco: preco,
-      quantidade: 1
-    }
-    const jaAdicionado = this.state.carrinho.filter(produto => {
-      return produto.id === id
+
+  adicionarProduto = (id) => {
+    const novoCarrinho = this.state.carrinho.map(produto => {
+      if(produto.id === id){
+        return {...produto, quantidade: produto.quantidade + 1}
+      }else{
+        return produto
+      }
     })
-
-    let  carrinhoAtualizado
-
-    if(jaAdicionado){
-      carrinhoAtualizado = this.state.carrinho.map(produto => {
-        if(produto.id === id){
-          return {...produto, quantidade: produto.quantidade + 1}
-        }else return produto
-      })
-    }else{
-      carrinhoAtualizado = [...this.state.carrinho, produtoAdicionado]
-    }
-    this.setState({carrinho: carrinhoAtualizado})
-    console.log(this.state.carrinho)
+    this.setState({carrinho: novoCarrinho})
   }
+
+  aoRemover = (id) => {
+    const novoCarrinho = this.state.carrinho.map(produto => {
+      if(produto.id === id){
+        return {...produto, quantidade: produto.quantidade - 1}
+      }else{
+        return produto
+      }
+    })
+    this.setState({carrinho: novoCarrinho})
+  }
+  
   render() {
     return (
       <MainContainer>
         <Filtros/>
         <Home
-        adicionarProduto={this.adicionarProduto}
+        aoClicar ={this.adicionarProduto}
         />
-        <Carrinho/>
+        <Carrinho
+        carrinho ={this.state.carrinho}
+        aoClicar={this.aoRemover}
+        />
       </MainContainer>
     );
   }
