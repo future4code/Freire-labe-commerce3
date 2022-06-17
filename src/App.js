@@ -54,7 +54,7 @@ export default class App extends React.Component {
   } 
 
   aoDigitarNome = (event) => {
-    this.setState({inputBuscaNome: event.target.value})
+    this.setState({inputBuscaNome: event.target.value.toLowerCase()})
   }
 
   alterarOrdem = (event) => {
