@@ -42,7 +42,7 @@ export default class Home extends React.Component {
       return (
         (produto.preco >= this.props.valorMin) && 
         (produto.preco >= this.props.valorMin) &&
-        (produto.nome.includes(this.props.buscaNome))
+        (produto.nome.toLowerCase().includes(this.props.buscaNome.toLowerCase()))
         )
     })
     .sort((a, b) => {
