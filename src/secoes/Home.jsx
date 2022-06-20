@@ -80,7 +80,7 @@ export default class Home extends React.Component {
     .filter(produto => {
       return (
         (produto.preco >= this.props.valorMin) && 
-        (produto.preco >= this.props.valorMin) &&
+        (produto.preco <= this.props.valorMax) &&
         (produto.nome.toLowerCase().includes(this.props.buscaNome.toLowerCase()))
         )
     })
