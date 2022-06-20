@@ -4,16 +4,31 @@ import Card from "../components/Card";
 import { produtos } from "../datas/produtos";
 import { carrinho } from "../datas/produtos";
 
-
+const DivHome = styled.div`
+  grid-area: home;
+`
 
 const Cabecalho = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   border: 1px solid black;
+  border-top: none;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding-bottom: 10px;
+  & select {
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+  };
+  & label {
+    font-weight: bold;
+  }
 `
 
 const PainelProdutos = styled.div`
   display: grid;
+  margin-top: 30px;
   padding: 10px;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 10px;
@@ -21,6 +36,23 @@ const PainelProdutos = styled.div`
 `
 const Botao = styled.button`
   align-self: center;
+  background-color: transparent;
+  font-weight: bold;
+  width: 50%;
+  min-width: fit-content;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: black;
+    color: white;
+  };
+  &:active {
+    background-color: white;
+    color: black;
+  }
 `
 
 const ContainerCard = styled.div`
@@ -28,6 +60,13 @@ const ContainerCard = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+  border: 1px solid transparent;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  &:hover {
+        background-color: #eeeeee;
+        border-color: #eeeeee;
+  }
 `
 
 export default class Home extends React.Component { 
@@ -72,11 +111,11 @@ export default class Home extends React.Component {
     })
 
     return (
-      <div>
+      <DivHome>
             <Cabecalho>
-                <span>Quantidade de produtos: {produtosMapeados.length}</span>
+                <span><strong>{produtosMapeados.length}</strong> produtos encontrados</span>
                 <span>
-                  <label htmlFor="ordem">Ordenação: </label>
+                  <label htmlFor="ordem">Ordenar por: </label>
                   <select 
                   id="ordem"
                   value={this.props.ordem}
@@ -89,7 +128,7 @@ export default class Home extends React.Component {
             <PainelProdutos>
                 {produtosMapeados}                
             </PainelProdutos>
-      </div>
+      </DivHome>
     );
   }
 }

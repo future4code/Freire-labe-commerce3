@@ -14,6 +14,7 @@ const CardProduto = styled.div`
     & img{
         width: 100%;
     }
+    
 `
 
 export default class Card extends React.Component {
@@ -28,8 +29,8 @@ export default class Card extends React.Component {
       return (
         <CardProduto>
             <img src={this.props.imagem} alt={this.props.descricao} />
-            <span>{this.props.nome}</span>
-            <span>R$ {this.props.preco}</span>            
+            <span><strong>{this.props.nome}</strong></span>
+            <span>R$ <strong>{this.props.preco.toFixed(2)}</strong></span>            
         </CardProduto>
       );
     }
